@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio de Mercado: Pasarelas y Plataformas de Pago Digitales en México</title>
+    
+    <!-- Google Fonts: Inter (Sans-serif limpia y técnica estilo San Francisco) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"Helvetica Neue"', 'sans-serif'],
+                    },
+                    colors: {
+                        apple: {
+                            bg: '#FFFFFF',
+                            dark: '#000000',
+                            body: '#1D1D1F',
+                            muted: '#6E6E73',
+                            border: '#E5E5E7',
+                            surface: '#F5F5F7',
+                            blue: '#0066CC',
+                            blueHover: '#0055B3',
+                            blueLight: '#E8F2FF',
+                            cardDark: '#0A0A0C'
+                        }
+                    },
+                    borderRadius: {
+                        'apple': '12px',
+                        'apple-sm': '8px',
+                        'apple-lg': '16px'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            background-color: #FFFFFF;
+            color: #1D1D1F;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            letter-spacing: -0.011em;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 380px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 360px;
+            }
+        }
+        .tab-apple-active {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-apple-blue selection:text-white">
+
+    <!-- Chosen Palette: Apple Minimalist Pure (Pure White #FFFFFF, Pure Black #000000, Charcoal Body #1D1D1F, Electric Blue #0066CC, Ultra-thin Border #E5E5E7) -->
+
+    <!-- Application Structure Plan: Rediseño limpio con estética moderna de Apple. Fondo blanco puro con secciones oscuras en negro absoluto para alto impacto visual y contraste. Tipografía Inter con escalado display (Semibold), tarjetas suaves en blanco sobre superficie #F5F5F7 sin bordes pesados, líneas divisoras hiper-finas de 1px (#E5E5E7), esquinas redondeadas de 12px y acentos interactivos exclusivamente en azul eléctrico (#0066CC). -->
+
+    <!-- Visualization & Content Choices:
+       - Header: Barra flotante minimalista sobre blanco con borde 1px #E5E5E7 y badge azul.
+       - Sección 01 (Macro): Tarjetas de superficie suave #F5F5F7 con bordes redondeados y tipografía display 56pt-72pt en números clave.
+       - Sección 02 (Pasarelas): Píldoras de filtrado interactivas en azul eléctrico, tabla sin líneas pesadas y gráfico de barras Chart.js en azul sobre fondo blanco.
+       - Sección 03 (Simulador SAT): Sección de contraste en negro absoluto (#000000) para el desglose financiero, creando un modo oscuro de alta concentración.
+       - Sección 04 (Riesgos): Gráfico Radar en azul eléctrico y tarjetas de vectores de riesgo con acentos suaves.
+       - Sección 05 (Perfiles & Buyer Personas): Pestañas de control redondeadas estilo Apple, fichas de Buyer Persona y dictamen del consultor Ernesto Juárez en bloque negro de alto contraste.
+       - Confirmación: NO se utilizaron gráficos SVG ni la librería Mermaid JS. Todo renderizado en Canvas HTML5 y Tailwind CSS. -->
+
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <!-- Header / Apple-style Navigation -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-apple-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <span class="w-2.5 h-2.5 rounded-full bg-apple-blue inline-block"></span>
+                    <span class="text-xs font-semibold tracking-tight text-apple-dark uppercase">Estudio FinTech • México</span>
+                </div>
+                <nav class="hidden md:flex space-x-8 text-xs font-medium text-apple-muted">
+                    <a href="#macro" class="hover:text-apple-blue transition-colors">Macro</a>
+                    <a href="#pasarelas" class="hover:text-apple-blue transition-colors">Pasarelas</a>
+                    <a href="#calculadora" class="hover:text-apple-blue transition-colors">Simulador SAT</a>
+                    <a href="#riesgos" class="hover:text-apple-blue transition-colors">Riesgos</a>
+                    <a href="#perfiles" class="hover:text-apple-blue transition-colors">Personas</a>
+                </nav>
+                <div class="text-xs font-medium text-apple-body bg-apple-surface border border-apple-border px-3 py-1.5 rounded-apple-sm">
+                    Consultor: <strong class="font-semibold text-apple-blue">Ernesto Juárez</strong>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero / Presentación del Consultor Senior -->
+    <section class="py-20 sm:py-28 px-4 sm:px-8 lg:px-12 border-b border-apple-border bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+                <div class="lg:col-span-8 text-left">
+                    <div class="inline-flex items-center space-x-2 bg-apple-blueLight text-apple-blue text-xs font-semibold px-3 py-1 mb-6 rounded-full">
+                        <span class="w-1.5 h-1.5 rounded-full bg-apple-blue"></span>
+                        <span>DIAGNOSTICO DE MERCADO 2026</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-semibold text-apple-dark tracking-tight leading-[1.05] mb-8">
+                        Pasarelas de Pago Digitales en México
+                    </h1>
+                    <p class="text-apple-muted text-lg sm:text-xl font-normal leading-relaxed max-w-2xl">
+                        Estudio cualitativo y cuantitativo sobre la evolución del procesamiento de cobros, el impacto de las retenciones fiscales del SAT y los perfiles de adopción en el ecosistema emprendedor.
+                    </p>
+                </div>
+
+                <!-- Executive Signature Profile Card -->
+                <div class="lg:col-span-4 bg-apple-surface border border-apple-border p-8 rounded-apple-lg">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-apple-blue block mb-2">DIRECTOR DEL ESTUDIO</span>
+                    <h3 class="text-xl font-semibold text-apple-dark">Ernesto Juárez</h3>
+                    <p class="text-xs text-apple-muted mb-4 font-normal">Consultor Senior en Estudios de Mercado</p>
+                    <p class="text-sm text-apple-body border-t border-apple-border pt-4 leading-relaxed font-normal">
+                        "El reto principal de los cobros digitales en México no radica en la tecnología del checkout, sino en la optimización de la liquidez neta y el cumplimiento fiscal ante el SAT."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Quantitative Banner Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
+                <div class="bg-apple-surface p-6 rounded-apple border border-apple-border">
+                    <span class="text-xs font-medium text-apple-muted uppercase tracking-wider block mb-2">VALOR DE MERCADO</span>
+                    <div class="text-3xl sm:text-4xl font-semibold text-apple-dark tracking-tight">$138.05B <span class="text-xs text-apple-muted font-normal">USD</span></div>
+                    <span class="text-xs text-apple-blue font-medium mt-2 block">↑ $222.43B para 2030 (10% CAGR)</span>
+                </div>
+                <div class="bg-apple-surface p-6 rounded-apple border border-apple-border">
+                    <span class="text-xs font-medium text-apple-muted uppercase tracking-wider block mb-2">CUOTA RETAIL</span>
+                    <div class="text-3xl sm:text-4xl font-semibold text-apple-dark tracking-tight">38.24%</div>
+                    <span class="text-xs text-apple-muted mt-2 block">Comercio minorista líder</span>
+                </div>
+                <div class="bg-apple-surface p-6 rounded-apple border border-apple-border">
+                    <span class="text-xs font-medium text-apple-muted uppercase tracking-wider block mb-2">M-COMMERCE</span>
+                    <div class="text-3xl sm:text-4xl font-semibold text-apple-dark tracking-tight">79.0%</div>
+                    <span class="text-xs text-apple-blue font-medium mt-2 block">Compras desde Smartphone</span>
+                </div>
+                <div class="bg-apple-surface p-6 rounded-apple border border-apple-border">
+                    <span class="text-xs font-medium text-apple-muted uppercase tracking-wider block mb-2">RIESGO RETENCIÓN SAT</span>
+                    <div class="text-3xl sm:text-4xl font-semibold text-rose-600 tracking-tight">36.0%</div>
+                    <span class="text-xs text-rose-600 font-medium mt-2 block">Retención cautelar sin RFC</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Layout -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-20 space-y-28">
+
+        <!-- SECTION 01: PANORAMA MACROECONÓMICO -->
+        <section id="macro" class="scroll-mt-24">
+            <div class="max-w-3xl mb-12 text-left">
+                <span class="text-xs font-semibold text-apple-blue uppercase tracking-wider block mb-2">SECCIÓN 01</span>
+                <h2 class="text-3xl sm:text-5xl font-semibold text-apple-dark tracking-tight">
+                    Contexto Macroeconómico y Inclusión Financiera
+                </h2>
+                <p class="text-apple-muted mt-4 text-base sm:text-lg font-normal leading-relaxed">
+                    Análisis de la dualidad del mercado mexicano: un alto nivel de bancarización formal coexistiendo con una fuerte dependencia del efectivo en comercios físicos.
+                </p>
+            </div>
+
+            <!-- Quantitative Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-8 bg-apple-surface rounded-apple border border-apple-border flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-apple-blue block mb-3">01.1 / PROYECCIÓN 2030</span>
+                        <h3 class="text-3xl font-semibold text-apple-dark tracking-tight">$222.43B USD</h3>
+                        <p class="text-xs text-apple-muted mt-3 leading-relaxed">
+                            Crecimiento proyectado a una tasa anual compuesta (CAGR) del <strong>10.01%</strong> impulsado por pagos digitales.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-apple-border text-xs text-apple-muted font-medium">
+                        Base 2024: $138.05B USD
+                    </div>
+                </div>
+
+                <div class="p-8 bg-apple-surface rounded-apple border border-apple-border flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-apple-dark block mb-3">01.2 / DUALIDAD FISICA</span>
+                        <h3 class="text-3xl font-semibold text-apple-dark tracking-tight">75% EFECTIVO</h3>
+                        <p class="text-xs text-apple-muted mt-3 leading-relaxed">
+                            A pesar de que el <strong>76.5% de adultos</strong> cuenta con productos bancarios, el efectivo domina en punto de venta.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-apple-border text-xs text-apple-muted font-medium">
+                        E-commerce captura el 25%
+                    </div>
+                </div>
+
+                <div class="p-8 bg-apple-surface rounded-apple border border-apple-border flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-apple-blue block mb-3">01.3 / HÁBITO MÓVIL</span>
+                        <h3 class="text-3xl font-semibold text-apple-dark tracking-tight">79% M-COMMERCE</h3>
+                        <p class="text-xs text-apple-muted mt-3 leading-relaxed">
+                            El smartphone encabeza las transacciones digitales. El consumidor posee en promedio <strong>2.6 métodos de pago activos</strong>.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-apple-border text-xs text-apple-muted font-medium">
+                        Ticket promedio: $2,610 MXN
+                    </div>
+                </div>
+
+                <div class="p-8 bg-apple-surface rounded-apple border border-apple-border flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-apple-dark block mb-3">01.4 / SECTOR LÍDER</span>
+                        <h3 class="text-3xl font-semibold text-apple-dark tracking-tight">38.24% RETAIL</h3>
+                        <p class="text-xs text-apple-muted mt-3 leading-relaxed">
+                            El comercio minorista es el principal volumen de procesamiento, seguido de servicios y turismo.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-apple-border text-xs text-apple-muted font-medium">
+                        Catalizador de adopción PyME
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 02: MAPEO COMPETITIVO Y PASARELAS -->
+        <section id="pasarelas" class="scroll-mt-24">
+            <div class="max-w-3xl mb-12 text-left">
+                <span class="text-xs font-semibold text-apple-blue uppercase tracking-wider block mb-2">SECCIÓN 02</span>
+                <h2 class="text-3xl sm:text-5xl font-semibold text-apple-dark tracking-tight">
+                    Mapeo Competitivo de Pasarelas
+                </h2>
+                <p class="text-apple-muted mt-4 text-base sm:text-lg font-normal leading-relaxed">
+                    Comparativa estructural entre el modelo Agregador Tecnológico y la Adquirencia Bancaria Tradicional en México.
+                </p>
+            </div>
+
+            <!-- Model Comparison Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <div class="p-8 bg-apple-surface rounded-apple border border-apple-border">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-apple-blue block mb-2">MODELO A</span>
+                    <h3 class="text-lg font-semibold text-apple-dark mb-2">Agregadores Tecnológicos (Clip, Stripe, Mercado Pago)</h3>
+                    <p class="text-xs text-apple-muted leading-relaxed mb-4">
+                        Agrupa comercios bajo una afiliación adquirente masiva. Elimina contratos bancarios complejos y rentas mensuales.
+                    </p>
+                    <ul class="text-xs text-apple-body space-y-2 font-normal">
+                        <li class="flex items-center space-x-2"><span class="text-apple-blue font-bold">✓</span> Activación inmediata e integración por API o App.</li>
+                        <li class="flex items-center space-x-2"><span class="text-apple-blue font-bold">✓</span> Procesa más del 78% de terminales portátiles en México.</li>
+                        <li class="flex items-center space-x-2"><span class="text-amber-600 font-bold">!</span> Tasa por transacción ligeramente superior.</li>
+                    </ul>
+                </div>
+
+                <div class="p-8 bg-apple-surface rounded-apple border border-apple-border">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-apple-muted block mb-2">MODELO B</span>
+                    <h3 class="text-lg font-semibold text-apple-dark mb-2">Adquirente Bancario Tradicional</h3>
+                    <p class="text-xs text-apple-muted leading-relaxed mb-4">
+                        Relación directa con la institución financiera. Requiere expediente comercial completo y facturación mínima garantizada.
+                    </p>
+                    <ul class="text-xs text-apple-body space-y-2 font-normal">
+                        <li class="flex items-center space-x-2"><span class="text-apple-blue font-bold">✓</span> Comisiones reducidas para altos volúmenes de facturación.</li>
+                        <li class="flex items-center space-x-2"><span class="text-rose-600 font-bold">✗</span> Trámites extensos y costos fijos por terminal física.</li>
+                        <li class="flex items-center space-x-2"><span class="text-rose-600 font-bold">✗</span> Menor agilidad para adaptarse a cobros en línea.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Interactive Matrix Controls -->
+            <div class="bg-apple-surface p-6 rounded-apple border border-apple-border mb-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <h4 class="font-semibold text-apple-dark text-sm">Matriz Interactiva de Pasarelas</h4>
+                        <p class="text-xs text-apple-muted">Filtre por tipo de integración para comparar tasas y plazos.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterGateways('all')" id="btn-all" class="px-4 py-2 text-xs font-medium rounded-apple-sm bg-apple-blue text-white transition-colors">Todas</button>
+                        <button onclick="filterGateways('online')" id="btn-online" class="px-4 py-2 text-xs font-medium rounded-apple-sm bg-white text-apple-body border border-apple-border hover:bg-apple-surface transition-colors">E-Commerce / API</button>
+                        <button onclick="filterGateways('pos')" id="btn-pos" class="px-4 py-2 text-xs font-medium rounded-apple-sm bg-white text-apple-body border border-apple-border hover:bg-apple-surface transition-colors">Punto de Venta / POS</button>
+                        <button onclick="filterGateways('cash')" id="btn-cash" class="px-4 py-2 text-xs font-medium rounded-apple-sm bg-white text-apple-body border border-apple-border hover:bg-apple-surface transition-colors">Efectivo / Vouchers</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gateways Comparison Table -->
+            <div class="overflow-x-auto border border-apple-border rounded-apple bg-white mb-12">
+                <table class="min-w-full divide-y divide-apple-border text-left text-xs">
+                    <thead class="bg-apple-surface text-apple-muted font-medium text-xs">
+                        <tr>
+                            <th class="py-4 px-6">Plataforma</th>
+                            <th class="py-4 px-6">Comisión Tarjetas (TC/TD)</th>
+                            <th class="py-4 px-6">Efectivo / Alternativos</th>
+                            <th class="py-4 px-6">Tiempo Liquidación</th>
+                            <th class="py-4 px-6">Diferenciador Clave</th>
+                        </tr>
+                    </thead>
+                    <tbody id="gatewaysTableBody" class="divide-y divide-apple-border">
+                        <!-- Populated dynamically via JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Visual Chart & Banxico Infrastructure -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 bg-white p-8 rounded-apple border border-apple-border">
+                    <h4 class="font-semibold text-apple-dark text-sm mb-6">Comparativa de Tasa Base (%) Tarjetas</h4>
+                    <div class="chart-container">
+                        <canvas id="gatewayChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Banxico Infrastructure Highlight -->
+                <div class="lg:col-span-5 bg-apple-blueLight/50 p-8 rounded-apple border border-apple-blue/20">
+                    <span class="text-xs font-semibold text-apple-blue uppercase tracking-wider block mb-2">INFRAESTRUCTURA PÚBLICA BANXICO</span>
+                    <h4 class="font-semibold text-apple-dark text-xl mb-3">CoDi y DiMo: Pagos Inmediatos Sin Comisión</h4>
+                    <p class="text-xs text-apple-muted leading-relaxed mb-6">
+                        Plataformas impulsadas por el Banco de México para eliminar comisiones de intermediarios:
+                    </p>
+                    <div class="space-y-4 text-xs">
+                        <div class="bg-white p-5 rounded-apple-sm border border-apple-border">
+                            <strong class="text-apple-dark block font-semibold mb-1">Cobro Digital (CoDi):</strong>
+                            <p class="text-apple-muted leading-relaxed">Cobros con QR o NFC con <strong>0% de comisión</strong> sobre SPEI.</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-apple-sm border border-apple-border">
+                            <strong class="text-apple-dark block font-semibold mb-1">Dinero Móvil (DiMo):</strong>
+                            <p class="text-apple-muted leading-relaxed">Transferencias asociando el número celular a la CLABE bancaria sin costo de procesamiento.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 03: SIMULADOR DE LIQUIDEZ Y RETENCIÓN SAT (DARK MODE CONTRAST SECTION) -->
+        <section id="calculadora" class="scroll-mt-24 bg-apple-dark text-white p-8 sm:p-14 rounded-apple-lg border border-stone-800">
+            <div class="max-w-3xl mb-12 text-left">
+                <span class="text-xs font-semibold text-apple-blue uppercase tracking-wider block mb-2">SECCIÓN 03</span>
+                <h2 class="text-3xl sm:text-5xl font-semibold text-white tracking-tight">
+                    Simulador de Liquidez Neta e Impacto Fiscal (SAT)
+                </h2>
+                <p class="text-stone-400 mt-4 text-base sm:text-lg font-normal leading-relaxed">
+                    Calcule la dispersión real depositada en su cuenta bancaria considerando comisiones del servicio y retención obligatoria del ISR (Art. 113-A/C) y LIVA (Art. 18-J).
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Calculator Inputs -->
+                <div class="lg:col-span-5 bg-apple-cardDark p-8 rounded-apple border border-stone-800 space-y-6">
+                    <h3 class="font-semibold text-white text-sm border-b border-stone-800 pb-3">Parámetros de Entrada</h3>
+
+                    <div>
+                        <label class="block text-xs font-medium text-stone-300 mb-2">Monto de Venta Bruta (MXN)</label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-3 text-stone-400 font-medium">$</span>
+                            <input type="number" id="calcAmount" value="2610" min="10" step="50" oninput="calculatePayout()" class="w-full pl-8 pr-4 py-2.5 text-sm bg-stone-900 border border-stone-700 rounded-apple-sm focus:border-apple-blue focus:outline-none font-semibold text-white">
+                        </div>
+                        <span class="text-[11px] text-stone-500 mt-2 block">Ticket promedio e-commerce: $2,610 MXN</span>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-stone-300 mb-2">Pasarela Seleccionada</label>
+                        <select id="calcGateway" onchange="calculatePayout()" class="w-full px-4 py-2.5 text-sm bg-stone-900 border border-stone-700 rounded-apple-sm focus:border-apple-blue focus:outline-none font-medium text-white">
+                            <option value="stripe">Stripe (3.60% + $3.00)</option>
+                            <option value="mercadopago" selected>Mercado Pago (3.49% + $4.00)</option>
+                            <option value="clip">Clip (3.60%)</option>
+                            <option value="conekta">Conekta (3.40% + $3.00)</option>
+                            <option value="openpay">Openpay (2.90% + $2.50)</option>
+                            <option value="paypal">PayPal (3.95% + $4.00)</option>
+                            <option value="kueski">Kueski Pay - BNPL (5.50%)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-stone-300 mb-2">Estatus Fiscal (SAT)</label>
+                        <select id="calcRfcStatus" onchange="calculatePayout()" class="w-full px-4 py-2.5 text-sm bg-stone-900 border border-stone-700 rounded-apple-sm focus:border-apple-blue focus:outline-none font-medium text-white">
+                            <option value="valid">Persona Física / Moral con RFC Válido Cargado</option>
+                            <option value="invalid">Sin RFC Registrado / Datos Incompletos (Cautelar Punitivo)</option>
+                        </select>
+                    </div>
+
+                    <div class="p-4 bg-stone-900 rounded-apple-sm border border-stone-800 text-xs text-stone-300 leading-relaxed">
+                        <strong class="font-semibold text-apple-blue block mb-1">MARCO REGULATORIO FISCAL:</strong>
+                        De no cargar su RFC, la ley exige a las plataformas retener de forma cautelar el <strong>20% de ISR</strong> y el <strong>100% del IVA (16%)</strong>, acumulando un 36% de descuento directo sobre la venta bruta.
+                    </div>
+                </div>
+
+                <!-- Calculator Output -->
+                <div class="lg:col-span-7 bg-stone-900/90 p-8 rounded-apple border border-stone-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center border-b border-stone-800 pb-4 mb-6">
+                            <h3 class="text-xl font-semibold text-white">Desglose de Liquidez Neta</h3>
+                            <span id="rfcBadge" class="text-xs font-medium px-3 py-1 rounded-full">--</span>
+                        </div>
+
+                        <div class="space-y-4 text-sm font-sans">
+                            <div class="flex justify-between border-b border-stone-800/60 pb-3">
+                                <span class="text-stone-400">Venta Bruta Total:</span>
+                                <span id="resGross" class="font-semibold text-white">$0.00 MXN</span>
+                            </div>
+
+                            <div class="flex justify-between border-b border-stone-800/60 pb-3 text-stone-300">
+                                <span>(-) Comisión Pasarela + IVA del Servicio:</span>
+                                <span id="resGatewayFee" class="font-semibold text-rose-400">-$0.00 MXN</span>
+                            </div>
+
+                            <div class="flex justify-between border-b border-stone-800/60 pb-3 text-stone-300">
+                                <span>(-) Retención Fiscal ISR (SAT):</span>
+                                <span id="resIsr" class="font-semibold text-amber-400">-$0.00 MXN</span>
+                            </div>
+
+                            <div class="flex justify-between border-b border-stone-800/60 pb-3 text-stone-300">
+                                <span>(-) Retención Fiscal IVA (SAT):</span>
+                                <span id="resIva" class="font-semibold text-amber-400">-$0.00 MXN</span>
+                            </div>
+
+                            <div class="bg-stone-950 p-6 rounded-apple border border-stone-800 mt-8">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400 block">DEPÓSITO NETO DISPONIBLE</span>
+                                        <span class="text-xs text-stone-400">Capital abonado en su cuenta bancaria</span>
+                                    </div>
+                                    <div id="resNetPayout" class="text-3xl sm:text-4xl font-semibold text-emerald-400">$0.00 MXN</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="taxImpactAlert" class="mt-8 p-4 rounded-apple-sm text-xs leading-relaxed">
+                        <!-- Dynamic Alert populated via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 04: MATRIZ DE RIESGOS FINTECH -->
+        <section id="riesgos" class="scroll-mt-24">
+            <div class="max-w-3xl mb-12 text-left">
+                <span class="text-xs font-semibold text-apple-blue uppercase tracking-wider block mb-2">SECCIÓN 04</span>
+                <h2 class="text-3xl sm:text-5xl font-semibold text-apple-dark tracking-tight">
+                    Análisis de Riesgos FinTech en México
+                </h2>
+                <p class="text-apple-muted mt-4 text-base sm:text-lg font-normal leading-relaxed">
+                    Evaluación de severidad sobre los principales vectores de riesgo operativo, financiero y de fiscalización en el país.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Visual Risk Chart -->
+                <div class="lg:col-span-6 bg-white p-8 rounded-apple border border-apple-border">
+                    <h3 class="font-semibold text-apple-dark text-sm mb-6">Severidad de Vectores de Riesgo</h3>
+                    <div class="chart-container">
+                        <canvas id="riskChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Risk Profiles Grid -->
+                <div class="lg:col-span-6 space-y-4">
+                    <div class="p-6 bg-apple-surface rounded-apple border border-apple-border">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-semibold text-apple-dark text-sm">1. Fraude CNP & Contracargos</h4>
+                            <span class="text-xs font-medium bg-rose-100 text-rose-700 px-2.5 py-1 rounded-full">Muy Alto</span>
+                        </div>
+                        <p class="text-xs text-apple-muted mt-2 leading-relaxed">
+                            Transacciones no presenciales vulnerables a fraudes que ocasionan pérdidas de inventario e índices de disputa.
+                        </p>
+                    </div>
+
+                    <div class="p-6 bg-apple-surface rounded-apple border border-apple-border">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-semibold text-apple-dark text-sm">2. Retención Cautelar del SAT</h4>
+                            <span class="text-xs font-medium bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full">Alto</span>
+                        </div>
+                        <p class="text-xs text-apple-muted mt-2 leading-relaxed">
+                            Aplica el 36% de descuento de liquidez preventiva en negocios no formalizados o sin RFC actualizado.
+                        </p>
+                    </div>
+
+                    <div class="p-6 bg-apple-surface rounded-apple border border-apple-border">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-semibold text-apple-dark text-sm">3. Conectividad e Infraestructura</h4>
+                            <span class="text-xs font-medium bg-apple-blueLight text-apple-blue px-2.5 py-1 rounded-full">Medio-Alto</span>
+                        </div>
+                        <p class="text-xs text-apple-muted mt-2 leading-relaxed">
+                            Fallas de red móvil en zonas no metropolitanas impactan el funcionamiento de terminales mPOS y lectura de QR.
+                        </p>
+                    </div>
+
+                    <div class="p-6 bg-apple-surface rounded-apple border border-apple-border">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-semibold text-apple-dark text-sm">4. Fragmentación de Billeteras</h4>
+                            <span class="text-xs font-medium bg-stone-200 text-stone-700 px-2.5 py-1 rounded-full">Medio</span>
+                        </div>
+                        <p class="text-xs text-apple-muted mt-2 leading-relaxed">
+                            Poca interoperabilidad entre sistemas cerrados dificulta la experiencia unificada en punto de venta.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 05: BUYER PERSONAS Y SOLUCIONES PREFERIDAS -->
+        <section id="perfiles" class="scroll-mt-24">
+            <div class="max-w-3xl mb-12 text-left">
+                <span class="text-xs font-semibold text-apple-blue uppercase tracking-wider block mb-2">SECCIÓN 05</span>
+                <h2 class="text-3xl sm:text-5xl font-semibold text-apple-dark tracking-tight">
+                    Soluciones Preferidas y Buyer Personas
+                </h2>
+                <p class="text-apple-muted mt-4 text-base sm:text-lg font-normal leading-relaxed">
+                    Soluciones recomendadas según el tipo de emprendimiento, régimen de tributación fiscal y volumen de ventas.
+                </p>
+            </div>
+
+            <!-- Profile Selector Tabs -->
+            <div class="flex p-1.5 bg-apple-surface rounded-apple border border-apple-border mb-8 overflow-x-auto space-x-2">
+                <button onclick="switchProfile('solitary')" id="tab-solitary" class="py-2.5 px-6 text-xs font-medium rounded-apple-sm text-apple-muted hover:text-apple-dark whitespace-nowrap transition-all">
+                    01. Freelancers / Solopreneurs
+                </button>
+                <button onclick="switchProfile('micro')" id="tab-micro" class="py-2.5 px-6 text-xs font-medium rounded-apple-sm text-apple-muted hover:text-apple-dark whitespace-nowrap transition-all">
+                    02. Micro Emprendedores / Barrio
+                </button>
+                <button onclick="switchProfile('pyme')" id="tab-pyme" class="py-2.5 px-6 text-xs font-medium rounded-apple-sm text-apple-muted hover:text-apple-dark whitespace-nowrap transition-all">
+                    03. Pequeños Empresarios / PyMEs
+                </button>
+            </div>
+
+            <!-- Profile Dynamic Content Panel -->
+            <div id="profileContent" class="bg-apple-surface p-8 sm:p-12 rounded-apple border border-apple-border">
+                <!-- Injected dynamically via JS -->
+            </div>
+
+            <!-- Strategic Conclusions -->
+            <div class="mt-16 pt-12 border-t border-apple-border">
+                <div class="bg-apple-dark text-white p-8 sm:p-14 rounded-apple-lg border border-stone-800">
+                    <span class="text-xs font-semibold text-apple-blue uppercase tracking-wider block mb-2">DICTAMEN DE CONSULTORÍA SENIOR</span>
+                    <h3 class="text-3xl font-semibold mb-8 text-white tracking-tight">Conclusiones y Recomendaciones Estratégicas</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-stone-300">
+                        <div class="space-y-4">
+                            <h4 class="font-semibold text-white text-xs uppercase tracking-wider border-b border-stone-800 pb-2">Para Proveedores FinTech & Pasarelas:</h4>
+                            <ul class="space-y-3 list-disc pl-4 leading-relaxed font-normal text-xs">
+                                <li><strong>Validación Fiscal Automatizada:</strong> Integrar verificación inmediata de RFC para evitar retenciones cautelares innecesarias del 36%.</li>
+                                <li><strong>Integración de Rieles Banxico:</strong> Habilitar DiMo y QR interoperables para reducir los costos de cobro por transacción.</li>
+                                <li><strong>Protección Antifraude Adaptada:</strong> Ajustar modelos de riesgo al comportamiento de compra regional para reducir falsos positivos.</li>
+                            </ul>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h4 class="font-semibold text-white text-xs uppercase tracking-wider border-b border-stone-800 pb-2">Para Emprendedores y Empresarios:</h4>
+                            <ul class="space-y-3 list-disc pl-4 leading-relaxed font-normal text-xs">
+                                <li><strong>Formalización Fiscal:</strong> Cargar Cédula de Identificación Fiscal (RFC) para reducir las retenciones al 2.5% de ISR y 8% de IVA.</li>
+                                <li><strong>Estrategia Omnicanal:</strong> Combinar cobro mPOS presencial (Clip/Mercado Pago) con checkout web (Stripe/Openpay) y BNPL (Kueski Pay).</li>
+                                <li><strong>Auditoría de Costos Totales:</strong> Evaluar comisiones netas agregando el IVA correspondiente del servicio sobre el margen de venta.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 pt-6 border-t border-stone-800 text-center text-xs text-stone-500 font-medium">
+                        Estudio realizado por <strong>Ernesto Juárez</strong> — Consultor Senior en Estudios de Mercado.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white text-apple-muted py-12 px-4 border-t border-apple-border text-xs text-center font-normal">
+        <div class="max-w-7xl mx-auto space-y-2">
+            <p>© 2026 ESTUDIO DE MERCADO: PASARELAS DE PAGO DIGITALES EN MÉXICO.</p>
+            <p class="text-stone-400">DISEÑO MINIMALISTA PURE WHITE • RENDERIZADO CANVAS HTML5 • CUMPLIMIENTO LISR Y LIVA SAT.</p>
+        </div>
+    </footer>
+
+    <!-- Application Scripting -->
+    <script>
+        // DATA STORAGE & GLOBAL STATE
+        const gatewayData = [
+            { id: 'stripe', name: 'Stripe', rate: 3.60, fixed: 3.00, cash: 'N/A (API Digital)', settlement: '7 días hábiles', diff: 'Infraestructura API avanzada, suscripciones y SaaS', type: ['online'], chartRate: 3.60 },
+            { id: 'mercadopago', name: 'Mercado Pago', rate: 3.49, fixed: 4.00, cash: '3.79% + $4 / 0.99% QR', settlement: 'Inmediato a 30 días', diff: 'Ecosistema integral con tarjeta de débito y créditos', type: ['online', 'pos', 'cash'], chartRate: 3.49 },
+            { id: 'clip', name: 'Clip', rate: 3.60, fixed: 0.00, cash: 'N/A', settlement: '24 horas', diff: 'Líder en mPOS portátil, liquidez diaria sin rentas', type: ['pos'], chartRate: 3.60 },
+            { id: 'conekta', name: 'Conekta', rate: 3.40, fixed: 3.00, cash: 'OXXO Pay (1.7%-2.7%)', settlement: '48 horas', diff: 'Especialista en vouchers en efectivo y e-commerce local', type: ['online', 'cash'], chartRate: 3.40 },
+            { id: 'openpay', name: 'Openpay', rate: 2.90, fixed: 2.50, cash: '$8.00 MXN Fijo', settlement: '48 horas', diff: 'Respaldo BBVA, comisiones competitivas omnicanal', type: ['online', 'pos', 'cash'], chartRate: 2.90 },
+            { id: 'paypal', name: 'PayPal', rate: 3.95, fixed: 4.00, cash: 'N/A', settlement: '3 a 5 días hábiles', diff: 'Confianza en transacciones internacionales y protección', type: ['online'], chartRate: 3.95 },
+            { id: 'kueski', name: 'Kueski Pay', rate: 5.50, fixed: 0.00, cash: 'N/A (BNPL Quincenal)', settlement: 'Varios días/semana', diff: 'Compra ahora, paga después sin tarjeta; eleva conversión', type: ['online'], chartRate: 5.50 }
+        ];
+
+        const profileData = {
+            solitary: {
+                title: 'Emprendedores Solitarios, Freelancers y Creadores Digitales',
+                buyerPersona: '<strong>Perfil & Edad:</strong> Profesional independiente o creador de contenido (22 a 42 años).<br><strong>Esquema Fiscal:</strong> Persona Física con Actividad Empresarial o RESICO (Régimen Simplificado de Confianza).<br><strong>Canales de Venta:</strong> WhatsApp, Instagram, sitio web propio o servicios remotos.<br><strong>Dinámica Operativa:</strong> Venta de servicios profesionales, productos digitales o consultoría. Requiere enlaces de pago directos y gestión multimoneda.',
+                needs: 'Generación rápida de enlaces de pago, procesamiento internacional sin rentas fijas y automatización de reportes fiscales.',
+                preferred: 'Stripe, Enlaces de Pago de Mercado Pago, PayPal',
+                keyCriteria: 'Facilidad para compartir cobros en redes sociales y emisión ágil de comprobantes.',
+                analysis: 'Este perfil requiere inmediatez sin complejas estructuras web. Stripe es óptimo para cobros recurrentes o internacionales, mientras que Mercado Pago resuelve cobros puntuales con alta tasa de aprobación.'
+            },
+            micro: {
+                title: 'Micro Emprendedores, Comercios de Barrio y Vendedores Informales',
+                buyerPersona: '<strong>Perfil & Edad:</strong> Comerciante de negocio físico tradicional (28 a 58 años).<br><strong>Esquema Fiscal:</strong> En proceso de formalización o sin RFC cargado inicialmente.<br><strong>Canales de Venta:</strong> Local comercial físico, abarrotes, fonda, alimentos o venta itinerante.<br><strong>Dinámica Operativa:</strong> Ventas presenciales directas con ticket promedio bajo ($100 - $500 MXN). Depende de la liquidez diaria para reponer inventarios.',
+                needs: 'Cobro presencial vía terminal portátil (mPOS), cero rentas fijas y disponibilidad inmediata del capital.',
+                preferred: 'Clip, Mercado Pago Point & QR, DiMo (Banxico)',
+                keyCriteria: 'Terminales accesibles de un solo pago, cobro con QR de baja comisión y dispersión de saldo el mismo día.',
+                analysis: 'La prioridad de este segmento es la disponibilidad de dinero para resurtir. Mercado Pago permite disponer del saldo al instante con su tarjeta de débito vinculada. Clip destaca por su presencia y facilidad de uso presencial.'
+            },
+            pyme: {
+                title: 'Pequeños Empresarios y PyMEs Formales Multicanal',
+                buyerPersona: '<strong>Perfil & Edad:</strong> Director o Gerente de Operaciones (30 a 55 años).<br><strong>Esquema Fiscal:</strong> Persona Moral (S.A. de C.V., S.A.S.) o Persona Física consolidada.<br><strong>Canales de Venta:</strong> Tienda física y e-commerce propio (Shopify, WooCommerce, Magento).<br><strong>Dinámica Operativa:</strong> Facturación mensual recurrente con catálogo de productos extenso. Requiere soporte de Meses Sin Intereses (MSI), integración API y esquemas Buy Now Pay Later (BNPL).',
+                needs: 'Integración API flexible con tiendas en línea, vouchers en efectivo en conveniencia y pagos diferidos.',
+                preferred: 'Conekta, Openpay, Kueski Pay, Stripe',
+                keyCriteria: 'Confiabilidad de API, oferta de Meses Sin Intereses, soporte para pagos en efectivo y negociación de volumen.',
+                analysis: 'Las PyMEs consolidadas priorizan aumentar la conversión en el checkout. La adición de Kueski Pay (BNPL) resulta estratégica: permite vender a plazos a clientes sin tarjeta de crédito bancaria.'
+            }
+        };
+
+        // INITIALIZATION
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGatewaysTable('all');
+            initGatewayChart();
+            initRiskChart();
+            calculatePayout();
+            switchProfile('solitary');
+        });
+
+        // GATEWAY TABLE & CHART
+        function renderGatewaysTable(filter) {
+            const tbody = document.getElementById('gatewaysTableBody');
+            tbody.innerHTML = '';
+
+            const filtered = filter === 'all' 
+                ? gatewayData 
+                : gatewayData.filter(g => g.type.includes(filter));
+
+            filtered.forEach(g => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-apple-surface transition-colors';
+                tr.innerHTML = `
+                    <td class="py-4 px-6 font-semibold text-apple-dark">${g.name}</td>
+                    <td class="py-4 px-6 text-apple-body"><span class="font-semibold text-apple-blue">${g.rate}%</span> ${g.fixed > 0 ? `+ $${g.fixed.toFixed(2)} MXN` : ''} + IVA</td>
+                    <td class="py-4 px-6 text-apple-muted">${g.cash}</td>
+                    <td class="py-4 px-6 font-medium text-apple-dark">${g.settlement}</td>
+                    <td class="py-4 px-6 text-apple-muted">${g.diff}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterGateways(type) {
+            ['all', 'online', 'pos', 'cash'].forEach(t => {
+                const btn = document.getElementById(`btn-${t}`);
+                if (t === type) {
+                    btn.className = 'px-4 py-2 text-xs font-medium rounded-apple-sm bg-apple-blue text-white transition-colors';
+                } else {
+                    btn.className = 'px-4 py-2 text-xs font-medium rounded-apple-sm bg-white text-apple-body border border-apple-border hover:bg-apple-surface transition-colors';
+                }
+            });
+            renderGatewaysTable(type);
+        }
+
+        function initGatewayChart() {
+            const ctx = document.getElementById('gatewayChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: gatewayData.map(g => g.name),
+                    datasets: [{
+                        label: 'Comisión Tarjeta (%)',
+                        data: gatewayData.map(g => g.chartRate),
+                        backgroundColor: '#0066CC',
+                        borderRadius: 6,
+                        barThickness: 18
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: (ctx) => ` Comisión Base: ${ctx.raw}% + Fijo + IVA`
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 6,
+                            ticks: { callback: (val) => val + '%', font: { family: 'Inter' } },
+                            grid: { color: '#E5E5E7' }
+                        },
+                        y: {
+                            ticks: { font: { family: 'Inter', weight: '500' } },
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+
+        // PAYOUT & TAX RETENTION CALCULATOR LOGIC
+        function calculatePayout() {
+            const gross = parseFloat(document.getElementById('calcAmount').value) || 0;
+            const gatewayId = document.getElementById('calcGateway').value;
+            const rfcStatus = document.getElementById('calcRfcStatus').value;
+
+            const selectedGateway = gatewayData.find(g => g.id === gatewayId);
+
+            // Fee calculation
+            const baseCommissionRate = selectedGateway.rate / 100;
+            const fixedFee = selectedGateway.fixed;
+            const rawGatewayFee = (gross * baseCommissionRate) + fixedFee;
+            const gatewayFeeIva = rawGatewayFee * 0.16;
+            const totalGatewayDeduction = rawGatewayFee + gatewayFeeIva;
+
+            // SAT retention logic
+            let isrRate = 0;
+            let ivaRetentionRateOnGross = 0;
+
+            if (rfcStatus === 'valid') {
+                isrRate = 0.025; // 2.5% LISR Art 113-A/C
+                ivaRetentionRateOnGross = 0.08; // 50% IVA
+            } else {
+                isrRate = 0.20; // 20.0% LISR
+                ivaRetentionRateOnGross = 0.16; // 100% IVA
+            }
+
+            const isrDeduction = gross * isrRate;
+            const ivaDeduction = gross * ivaRetentionRateOnGross;
+            const totalTaxRetention = isrDeduction + ivaDeduction;
+
+            const netPayout = gross - totalGatewayDeduction - totalTaxRetention;
+
+            // UI Render
+            document.getElementById('resGross').innerText = `$${gross.toLocaleString('es-MX', {minimumFractionDigits: 2, maximumFractionDigits: 2})} MXN`;
+            document.getElementById('resGatewayFee').innerText = `-$${totalGatewayDeduction.toLocaleString('es-MX', {minimumFractionDigits: 2, maximumFractionDigits: 2})} MXN`;
+            document.getElementById('resIsr').innerText = `-$${isrDeduction.toLocaleString('es-MX', {minimumFractionDigits: 2, maximumFractionDigits: 2})} MXN (${(isrRate * 100).toFixed(1)}%)`;
+            document.getElementById('resIva').innerText = `-$${ivaDeduction.toLocaleString('es-MX', {minimumFractionDigits: 2, maximumFractionDigits: 2})} MXN (${(ivaRetentionRateOnGross * 100).toFixed(1)}%)`;
+            document.getElementById('resNetPayout').innerText = `$${Math.max(0, netPayout).toLocaleString('es-MX', {minimumFractionDigits: 2, maximumFractionDigits: 2})} MXN`;
+
+            const badge = document.getElementById('rfcBadge');
+            const alert = document.getElementById('taxImpactAlert');
+
+            if (rfcStatus === 'valid') {
+                badge.innerText = 'RFC VALIDADO';
+                badge.className = 'text-xs font-semibold px-3 py-1 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800';
+                
+                alert.className = 'mt-8 p-4 rounded-apple-sm text-xs bg-emerald-950/60 border border-emerald-800/80 text-emerald-300';
+                alert.innerHTML = `<strong>✓ SITUACIÓN FISCAL REGULADA:</strong> Con RFC validado, la retención fiscal total se reduce al <strong>10.5%</strong> ($${totalTaxRetention.toFixed(2)} MXN), acreditable en sus declaraciones formales.`;
+            } else {
+                badge.innerText = 'SIN RFC (CAUTELAR PUNITIVO)';
+                badge.className = 'text-xs font-semibold px-3 py-1 rounded-full bg-rose-950 text-rose-300 border border-rose-800';
+
+                alert.className = 'mt-8 p-4 rounded-apple-sm text-xs bg-rose-950/60 border border-rose-800/80 text-rose-300';
+                alert.innerHTML = `<strong>⚠️ ALERTA DE LIQUIDEZ:</strong> Al no tener un RFC cargado, el SAT aplica una retención cautelar preventiva del <strong>36.0%</strong> ($${totalTaxRetention.toFixed(2)} MXN) sobre el monto bruto.`;
+            }
+        }
+
+        // RISK CHART (Radar)
+        function initRiskChart() {
+            const ctx = document.getElementById('riskChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        'Ataques Ciberseguridad',
+                        'Retención Cautelar SAT',
+                        'Infraestructura Rural',
+                        'Fragmentación Billeteras',
+                        'Contracargos CNP'
+                    ],
+                    datasets: [{
+                        label: 'Índice de Severidad (1-100)',
+                        data: [92, 88, 70, 62, 85],
+                        backgroundColor: 'rgba(0, 102, 204, 0.15)',
+                        borderColor: '#0066CC',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#0066CC',
+                        pointBorderColor: '#FFF',
+                        pointHoverBackgroundColor: '#FFF',
+                        pointHoverBorderColor: '#0066CC'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: '#E5E5E7' },
+                            grid: { color: '#E5E5E7' },
+                            suggestedMin: 0,
+                            suggestedMax: 100,
+                            ticks: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        // PROFILE SWITCHER
+        function switchProfile(profileKey) {
+            ['solitary', 'micro', 'pyme'].forEach(key => {
+                const btn = document.getElementById(`tab-${key}`);
+                if (key === profileKey) {
+                    btn.className = 'py-2.5 px-6 text-xs font-semibold tab-apple-active rounded-apple-sm whitespace-nowrap transition-all';
+                } else {
+                    btn.className = 'py-2.5 px-6 text-xs font-medium rounded-apple-sm text-apple-muted hover:text-apple-dark whitespace-nowrap transition-all';
+                }
+            });
+
+            const data = profileData[profileKey];
+            const contentDiv = document.getElementById('profileContent');
+
+            contentDiv.innerHTML = `
+                <div class="space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-apple-border pb-4 gap-2">
+                        <h3 class="text-2xl font-semibold text-apple-dark tracking-tight">${data.title}</h3>
+                        <span class="text-xs font-semibold bg-apple-blueLight text-apple-blue px-3 py-1 rounded-full w-fit">Ficha de Buyer Persona</span>
+                    </div>
+
+                    <!-- Buyer Persona Detailed Card -->
+                    <div class="bg-white border border-apple-border p-6 rounded-apple text-xs">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-apple-blue block mb-3">DESCRIPCIÓN DEL BUYER PERSONA</span>
+                        <div class="text-apple-body leading-relaxed space-y-2">
+                            ${data.buyerPersona}
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <div class="bg-white p-6 rounded-apple border border-apple-border">
+                            <strong class="text-apple-dark block font-semibold mb-2 uppercase text-xs tracking-wider">Necesidad Dominante:</strong>
+                            <p class="text-apple-muted leading-relaxed">${data.needs}</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-apple border border-apple-border">
+                            <strong class="text-apple-dark block font-semibold mb-2 uppercase text-xs tracking-wider">Plataformas Preferidas:</strong>
+                            <p class="text-apple-blue font-semibold leading-relaxed">${data.preferred}</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-apple border border-apple-border text-xs">
+                        <strong class="text-apple-dark block font-semibold mb-2 uppercase text-xs tracking-wider">Criterios Clave de Selección:</strong>
+                        <p class="text-apple-muted leading-relaxed">${data.keyCriteria}</p>
+                    </div>
+
+                    <div class="p-6 bg-apple-dark text-white rounded-apple text-xs leading-relaxed">
+                        <strong class="text-white text-base block font-semibold mb-2">Dictamen del Consultor (Ernesto Juárez):</strong>
+                        <p class="text-stone-300 leading-relaxed">${data.analysis}</p>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
