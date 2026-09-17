@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es" class="light scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataformas de Cobro MX — Apple Pure White Experience</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        apple: {
+                            bg: '#FFFFFF',
+                            dark: '#000000',
+                            darkCard: '#0A0A0C',
+                            surface: '#F5F5F7',
+                            surfaceHover: '#E8E8ED',
+                            text: '#1D1D1F',
+                            subtext: '#86868B',
+                            border: '#E5E5E7',
+                            borderDark: 'rgba(255, 255, 255, 0.12)',
+                            blue: '#0066CC',
+                            blueHover: '#0055B3',
+                            green: '#34C759',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'SFMono-Regular', 'Menlo', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #FFFFFF;
+            color: #1D1D1F;
+            letter-spacing: -0.011em;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Apple Range Slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: #E5E5E7;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        .dark-slider input[type=range] {
+            background: #2C2C2E;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #0066CC;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            transition: transform 0.15s ease;
+        }
+
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFFFF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D1D1D6;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #999999;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-apple-blue selection:text-white">
+
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-apple-border text-apple-text">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+            <!-- Brand -->
+            <div class="flex items-center gap-2">
+                <span class="font-semibold text-lg tracking-tight text-apple-text">Cobros<span class="text-apple-blue">-mx</span></span>
+                <span class="text-xs text-apple-subtext bg-apple-surface px-2 py-0.5 rounded-full font-medium">Ernesto Juárez</span>
+            </div>
+
+            <!-- Header Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-xs font-medium text-apple-subtext">
+                <a href="#simulador" class="hover:text-apple-text transition">Simulador SAT</a>
+                <a href="#matriz" class="hover:text-apple-text transition">Matriz de Tasas</a>
+                <a href="#plataformas" class="hover:text-apple-text transition">Plataformas</a>
+                <a href="#conclusiones" class="hover:text-apple-text transition">Diagnóstico IA</a>
+            </nav>
+
+            <!-- Quick Action -->
+            <div>
+                <a href="#simulador" class="bg-apple-blue hover:bg-apple-blueHover text-white px-3.5 py-1.5 rounded-full text-xs font-medium transition shadow-sm inline-flex items-center gap-1.5">
+                    <span>Simular Liquidez</span>
+                    <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-apple-bg pt-16 pb-20 border-b border-apple-border">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="inline-block text-xs font-semibold uppercase tracking-widest text-apple-blue mb-3">
+                Análisis Financiero de Pasarelas de Pago
+            </span>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-apple-text leading-tight">
+                Claridad absoluta en tus <br class="hidden sm:inline"><span class="text-apple-blue">comisiones de cobro.</span>
+            </h1>
+            <p class="mt-5 text-lg text-apple-subtext max-w-2xl mx-auto font-normal leading-relaxed">
+                Sin cargos ocultos ni sorpresas impositivas. Compara el retorno neto exacto de tu negocio considerando tasas, retenciones ISR/IVA y liquidación bancaria en México.
+            </p>
+
+            <!-- Key Metric Highlights -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 max-w-3xl mx-auto">
+                <div class="p-4 bg-apple-surface rounded-2xl text-left border border-apple-border/50">
+                    <span class="block text-xs text-apple-subtext font-medium">Cobertura</span>
+                    <span class="text-xl font-semibold text-apple-text mt-1 block">7 Pasarelas</span>
+                </div>
+                <div class="p-4 bg-apple-surface rounded-2xl text-left border border-apple-border/50">
+                    <span class="block text-xs text-apple-subtext font-medium">Tasa Promedio</span>
+                    <span class="text-xl font-semibold text-apple-text mt-1 block">3.49% + IVA</span>
+                </div>
+                <div class="p-4 bg-apple-surface rounded-2xl text-left border border-apple-border/50">
+                    <span class="block text-xs text-apple-subtext font-medium">IVA Referencia</span>
+                    <span class="text-xl font-semibold text-apple-text mt-1 block">16% Aplicado</span>
+                </div>
+                <div class="p-4 bg-apple-surface rounded-2xl text-left border border-apple-border/50">
+                    <span class="block text-xs text-apple-subtext font-medium">Actualización</span>
+                    <span class="text-xl font-semibold text-apple-blue mt-1 block">Q3 2026</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="simulador" class="bg-apple-dark text-white py-20 border-b border-apple-border dark-slider">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-12">
+                <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-white">
+                    Simulador de Liquidez Neto & Retención SAT
+                </h2>
+                <p class="mt-3 text-slate-400 text-base">
+                    Ajusta el ticket promedio y volumen estimado para calcular el depósito real abonado a tu cuenta bancaria.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                
+                <!-- Controls Card -->
+                <div class="lg:col-span-5 bg-apple-darkCard p-6 sm:p-8 rounded-3xl border border-apple-borderDark space-y-8">
+                    <!-- Ticket Amount Slider -->
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <label class="text-xs text-slate-400 font-medium uppercase tracking-wider">Ticket Promedio</label>
+                            <span class="font-mono text-xl font-semibold text-white" id="amountDisplay">$1,500 MXN</span>
+                        </div>
+                        <input type="range" id="amountRange" min="100" max="50000" step="100" value="1500" class="w-full">
+                        <div class="flex justify-between text-[11px] font-mono text-slate-500 mt-2">
+                            <span>$100</span>
+                            <span>$25,000</span>
+                            <span>$50,000 MXN</span>
+                        </div>
+                    </div>
+
+                    <!-- Volume Slider -->
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <label class="text-xs text-slate-400 font-medium uppercase tracking-wider">Ventas al Mes</label>
+                            <span class="font-mono text-xl font-semibold text-white" id="volumeDisplay">50 Tx ($75,000)</span>
+                        </div>
+                        <input type="range" id="volumeRange" min="1" max="500" step="5" value="50" class="w-full">
+                        <div class="flex justify-between text-[11px] font-mono text-slate-500 mt-2">
+                            <span>1 Tx</span>
+                            <span>250 Tx</span>
+                            <span>500 Tx</span>
+                        </div>
+                    </div>
+
+                    <!-- Channel Switcher -->
+                    <div>
+                        <label class="block text-xs text-slate-400 font-medium uppercase tracking-wider mb-3">Canal de Procesamiento</label>
+                        <div class="grid grid-cols-3 gap-1 p-1 bg-zinc-900 rounded-xl border border-zinc-800 text-[11px]">
+                            <button id="typeWebBtn" onclick="setPaymentType('web')" class="py-2 font-semibold rounded-lg bg-apple-blue text-white transition">
+                                ONLINE / WEB
+                            </button>
+                            <button id="typePosBtn" onclick="setPaymentType('pos')" class="py-2 font-semibold rounded-lg bg-transparent text-slate-400 hover:text-white transition">
+                                TERMINAL / POS
+                            </button>
+                            <button id="typeAllBtn" onclick="setPaymentType('all')" class="py-2 font-semibold rounded-lg bg-transparent text-slate-400 hover:text-white transition">
+                                TODAS (GLOBAL)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Payout Stream -->
+                <div class="lg:col-span-7 space-y-3">
+                    <div class="flex items-center justify-between text-xs text-slate-400 px-1 mb-2 font-mono">
+                        <span>PLATA FORMA</span>
+                        <span>DESGLOSE NETO POR TX</span>
+                    </div>
+
+                    <div id="calculatorResults" class="space-y-3">
+                        <!-- Injected via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="matriz" class="bg-apple-bg py-20 border-b border-apple-border">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-apple-blue block mb-2">Especificaciones Técnicas</span>
+                    <h2 class="text-3xl font-semibold text-apple-text tracking-tight">
+                        Matriz de Tasas & Plazos
+                    </h2>
+                </div>
+
+                <!-- Apple Segmented Controls Filter -->
+                <div class="inline-flex p-1 bg-apple-surface rounded-xl border border-apple-border/80">
+                    <button onclick="filterTable('all')" class="table-filter-btn px-4 py-1.5 text-xs font-medium rounded-lg bg-white text-apple-text shadow-sm transition">
+                        Todas
+                    </button>
+                    <button onclick="filterTable('instant')" class="table-filter-btn px-4 py-1.5 text-xs font-medium rounded-lg text-apple-subtext hover:text-apple-text transition">
+                        Depósito Inmediato
+                    </button>
+                    <button onclick="filterTable('no-fix')" class="table-filter-btn px-4 py-1.5 text-xs font-medium rounded-lg text-apple-subtext hover:text-apple-text transition">
+                        Sin Cuota Fija
+                    </button>
+                </div>
+            </div>
+
+            <!-- Minimal Data Table -->
+            <div class="overflow-x-auto rounded-2xl border border-apple-border bg-apple-surface/40">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-apple-border text-xs text-apple-subtext uppercase tracking-wider font-medium">
+                            <th class="py-4 px-6">Proveedor</th>
+                            <th class="py-4 px-6">Comisión Porcentual</th>
+                            <th class="py-4 px-6">Cuota Fija</th>
+                            <th class="py-4 px-6">Liquidación Bancaria</th>
+                            <th class="py-4 px-6">Meses Sin Intereses</th>
+                            <th class="py-4 px-6 text-right">Cualidad</th>
+                        </tr>
+                    </thead>
+                    <tbody id="matrixTableBody" class="divide-y divide-apple-border text-xs text-apple-text">
+                        <!-- Injected dynamically -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Export and Legal Notice -->
+            <div class="mt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center text-xs text-apple-subtext gap-3">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="info" class="w-4 h-4 text-apple-blue"></i>
+                    <span>Tasa base sujeta a retenciones ISR/IVA aplicables según el régimen fiscal del comercio.</span>
+                </div>
+                <button onclick="exportData()" class="text-apple-blue hover:underline font-medium inline-flex items-center gap-1">
+                    <i data-lucide="download" class="w-3.5 h-3.5"></i> Exportar tabla (.csv)
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="plataformas" class="bg-apple-bg py-20 border-b border-apple-border">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl mb-12">
+                <span class="text-xs font-semibold uppercase tracking-widest text-apple-blue block mb-2">Fichas Individuales</span>
+                <h2 class="text-3xl font-semibold text-apple-text tracking-tight">
+                    Plataformas Analizadas
+                </h2>
+                <p class="text-apple-subtext text-base mt-2">
+                    Superficies minimalistas estructuradas con foco en experiencia de usuario e integración API.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="platformCardsContainer">
+                <!-- Injected dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <section id="conclusiones" class="bg-apple-dark text-white py-20 border-b border-apple-border">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-apple-darkCard p-8 sm:p-10 rounded-3xl border border-apple-borderDark">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="p-3 bg-apple-blue/15 text-apple-blue rounded-2xl">
+                        <i data-lucide="sparkles" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-white">Conclusiones & Diagnóstico IA</h3>
+                        <p class="text-xs text-slate-400">Recomendación automatizada para optimizar el margen de ganancia</p>
+                    </div>
+                </div>
+
+                <div class="space-y-5">
+                    <div>
+                        <label class="block text-xs font-medium uppercase tracking-wider text-slate-400 mb-2">Describe las necesidades de tu comercio</label>
+                        <textarea id="aiPromptInput" rows="3" class="w-full bg-zinc-900 border border-zinc-800 rounded-2xl p-4 text-xs sm:text-sm text-slate-200 placeholder-zinc-500 focus:outline-none focus:border-apple-blue transition font-mono" placeholder="Ej: Venta de software en línea con cobros recurrentes en México y exportación a EE.UU. Facturación mensual $200,000 MXN."></textarea>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <span class="text-xs text-slate-500">
+                            Evaluación instantánea basada en el algoritmo de menor fricción.
+                        </span>
+                        <button onclick="generateAIRecommendation()" id="aiGenerateBtn" class="bg-apple-blue hover:bg-apple-blueHover text-white px-6 py-2.5 rounded-full text-xs font-semibold transition inline-flex items-center gap-2 shadow-sm">
+                            <i data-lucide="cpu" class="w-4 h-4"></i>
+                            Generar Diagnóstico
+                        </button>
+                    </div>
+
+                    <!-- AI Result Output -->
+                    <div id="aiResultBox" class="hidden mt-6 p-5 bg-zinc-900/90 border border-apple-blue/30 rounded-2xl text-xs font-mono text-slate-300 leading-relaxed">
+                        <!-- Response content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-apple-surface text-apple-subtext py-12 text-xs border-t border-apple-border">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-8 border-b border-apple-border">
+                <div>
+                    <span class="font-semibold text-apple-text text-sm block">Cobros-mx — D.R. 2026 StratBiz | Ernesto Juárez</span>
+                    <p class="text-apple-subtext mt-1 max-w-md">
+                        Plataforma independiente de comparación de comisiones y pasarelas de pago en México.
+                    </p>
+                </div>
+                <div class="flex gap-6 font-medium">
+                    <a href="#simulador" class="hover:text-apple-text transition">Simulador</a>
+                    <a href="#matriz" class="hover:text-apple-text transition">Matriz</a>
+                    <a href="#plataformas" class="hover:text-apple-text transition">Plataformas</a>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px]">
+                <div>
+                    © 2026 Cobros-mx. Todos los derechos reservados.
+                </div>
+                <div class="flex items-center gap-4">
+                    <span>Sin marcas patrocinadas</span>
+                    <span>•</span>
+                    <span>Tasa de Referencia BANXICO</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const platforms = [
+            {
+                id: 'codi',
+                name: 'CoDi (Banxico)',
+                category: 'both',
+                rateWebPct: 0.0,
+                rateWebFix: 0.0,
+                ratePosPct: 0.0,
+                ratePosFix: 0.0,
+                payoutDays: 'Inmediato (0 días)',
+                msi: 'No aplica',
+                noFixFee: true,
+                instantPayout: true,
+                badge: 'Sin Comisión 0%',
+                features: ['Infraestructura oficial Banco de México', 'Transferencia SPEI instantánea 24/7 sin costo', 'Cobro mediante QR y NFC desde apps bancarias'],
+                bestFor: 'Cobros digitales sin costo de comisión en México'
+            },
+            {
+                id: 'stripe',
+                name: 'Stripe México',
+                category: 'web',
+                rateWebPct: 3.6,
+                rateWebFix: 3.0,
+                ratePosPct: null,
+                ratePosFix: null,
+                payoutDays: '2 días hábiles',
+                msi: 'Sí (3, 6, 9, 12 Meses)',
+                noFixFee: false,
+                instantPayout: false,
+                badge: 'Líder API',
+                features: ['Suscripciones avanzadas y cobro recurrente', 'Antifraude Radar con IA', 'Checkout optimizado y Elements'],
+                bestFor: 'E-commerce, SaaS y plataformas globales'
+            },
+            {
+                id: 'mercadopago',
+                name: 'Mercado Pago',
+                category: 'both',
+                rateWebPct: 3.49,
+                rateWebFix: 4.0,
+                ratePosPct: 3.5,
+                ratePosFix: 0.0,
+                payoutDays: 'Inmediato (0 días)',
+                msi: 'Sí (Hasta 18 Meses)',
+                noFixFee: false,
+                instantPayout: true,
+                badge: 'Cobro Inmediato',
+                features: ['Dinero disponible al instante', 'Lectores Point y Checkout Web', 'Links de pago y QR'],
+                bestFor: 'Comercios que requieren flujo de caja inmediato'
+            },
+            {
+                id: 'clip',
+                name: 'Clip',
+                category: 'pos',
+                rateWebPct: 3.6,
+                rateWebFix: 0.0,
+                ratePosPct: 3.6,
+                ratePosFix: 0.0,
+                payoutDays: '24 horas',
+                msi: 'Sí (3, 6, 9, 12 Meses)',
+                noFixFee: true,
+                instantPayout: false,
+                badge: 'Sin Renta Fija',
+                features: ['Sin mínimos de facturación', 'Terminales físicas accesibles', 'Catálogo de productos e inventario'],
+                bestFor: 'Pymes, tiendas físicas y profesionales'
+            },
+            {
+                id: 'conekta',
+                name: 'Conekta',
+                category: 'web',
+                rateWebPct: 2.9,
+                rateWebFix: 2.5,
+                ratePosPct: null,
+                ratePosFix: null,
+                payoutDays: '2 días hábiles',
+                msi: 'Sí (3, 6, 12 Meses)',
+                noFixFee: false,
+                instantPayout: false,
+                badge: 'OXXO & SPEI',
+                features: ['Red OXXO Pay con notificación en tiempo real', 'SPEI automatizado', 'Soporte especializado México'],
+                bestFor: 'Comercio electrónico en mercado nacional'
+            },
+            {
+                id: 'openpay',
+                name: 'Openpay (BBVA)',
+                category: 'web',
+                rateWebPct: 2.9,
+                rateWebFix: 2.5,
+                ratePosPct: null,
+                ratePosFix: null,
+                payoutDays: '1 a 2 días',
+                msi: 'Sí (Red BBVA)',
+                noFixFee: false,
+                instantPayout: false,
+                badge: 'Respaldo BBVA',
+                features: ['Múltiples vías de cobro', 'Antifraude OpenControl', 'Depósitos acelerados para cuenta BBVA'],
+                bestFor: 'Empresas consolidadas y corporativos'
+            },
+            {
+                id: 'paypal',
+                name: 'PayPal México',
+                category: 'web',
+                rateWebPct: 3.95,
+                rateWebFix: 4.0,
+                ratePosPct: null,
+                ratePosFix: null,
+                payoutDays: '3 a 5 días',
+                msi: 'Sí (Mensualidades sin intereses)',
+                noFixFee: false,
+                instantPayout: false,
+                badge: 'Confianza Global',
+                features: ['Protección al comprador y vendedor', 'Conversión automática multi-divisa', 'Máxima tasa de conversión internacional'],
+                bestFor: 'Ventas al extranjero y máxima credibilidad'
+            }
+        ];
+
+        let currentPaymentType = 'web';
+        let currentFilter = 'all';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            
+            const amountRange = document.getElementById('amountRange');
+            const volumeRange = document.getElementById('volumeRange');
+
+            amountRange.addEventListener('input', updateCalculator);
+            volumeRange.addEventListener('input', updateCalculator);
+
+            updateCalculator();
+            renderMatrixTable();
+            renderPlatformCards();
+        });
+
+        function setPaymentType(type) {
+            currentPaymentType = type;
+            const webBtn = document.getElementById('typeWebBtn');
+            const posBtn = document.getElementById('typePosBtn');
+            const allBtn = document.getElementById('typeAllBtn');
+
+            const activeStyle = "py-2 font-semibold rounded-lg bg-apple-blue text-white transition";
+            const inactiveStyle = "py-2 font-semibold rounded-lg bg-transparent text-slate-400 hover:text-white transition";
+
+            webBtn.className = type === 'web' ? activeStyle : inactiveStyle;
+            posBtn.className = type === 'pos' ? activeStyle : inactiveStyle;
+            if (allBtn) allBtn.className = type === 'all' ? activeStyle : inactiveStyle;
+
+            updateCalculator();
+        }
+
+        function updateCalculator() {
+            const amount = parseFloat(document.getElementById('amountRange').value);
+            const volume = parseInt(document.getElementById('volumeRange').value);
+
+            document.getElementById('amountDisplay').textContent = `$${amount.toLocaleString('es-MX')} MXN`;
+            document.getElementById('volumeDisplay').textContent = `${volume} Tx ($${(amount * volume).toLocaleString('es-MX')})`;
+
+            const resultsContainer = document.getElementById('calculatorResults');
+            resultsContainer.innerHTML = '';
+
+            const availablePlatforms = platforms.filter(p => {
+                if (currentPaymentType === 'all') return true;
+                if (currentPaymentType === 'web') return p.rateWebPct !== null;
+                return p.ratePosPct !== null || p.category === 'both';
+            });
+
+            const calculated = availablePlatforms.map(p => {
+                const pct = (currentPaymentType === 'pos' && p.ratePosPct !== null) ? p.ratePosPct : (p.rateWebPct || 0);
+                const fix = (currentPaymentType === 'pos' && p.ratePosFix !== null) ? p.ratePosFix : (p.rateWebFix || 0);
+
+                const baseFee = (amount * (pct / 100)) + fix;
+                const iva = baseFee * 0.16;
+                const totalFee = baseFee + iva;
+                const netAmount = amount - totalFee;
+                const effectivePct = amount > 0 ? (totalFee / amount) * 100 : 0;
+
+                return {
+                    ...p,
+                    pct,
+                    fix,
+                    baseFee,
+                    iva,
+                    totalFee,
+                    netAmount,
+                    effectivePct
+                };
+            });
+
+            calculated.sort((a, b) => b.netAmount - a.netAmount);
+
+            calculated.forEach((item, index) => {
+                const isBest = index === 0;
+                const card = document.createElement('div');
+                card.className = `p-4 rounded-2xl border transition flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 ${
+                    isBest 
+                    ? 'bg-zinc-900 border-apple-blue shadow-lg' 
+                    : 'bg-apple-darkCard border-apple-borderDark hover:border-zinc-700'
+                }`;
+
+                card.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="w-7 h-7 flex items-center justify-center font-mono font-bold text-xs ${
+                            isBest ? 'bg-apple-blue text-white' : 'bg-zinc-800 text-slate-300'
+                        } rounded-full">
+                            ${index + 1}
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="font-semibold text-white text-sm">${item.name}</span>
+                                ${isBest ? '<span class="text-[10px] font-mono px-2 py-0.5 bg-apple-blue/20 text-apple-blue font-semibold rounded-full">MAYOR RETORNO</span>' : ''}
+                            </div>
+                            <div class="text-[11px] font-mono text-slate-400">
+                                Tasa: <span class="text-slate-200">${item.pct}% + $${item.fix.toFixed(2)} MXN</span> (+ IVA)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 sm:gap-6 w-full sm:w-auto justify-between sm:justify-end border-t sm:border-t-0 border-zinc-800 pt-2 sm:pt-0">
+                        <div class="text-right">
+                            <div class="text-[10px] font-mono text-slate-400 uppercase">Comisión</div>
+                            <div class="font-mono text-xs text-rose-400">
+                                -$${item.totalFee.toFixed(2)} MXN
+                            </div>
+                        </div>
+
+                        <div class="text-right">
+                            <div class="text-[10px] font-mono text-slate-400 uppercase">En Banco</div>
+                            <div class="font-mono font-semibold text-sm ${isBest ? 'text-apple-blue' : 'text-white'}">
+                                $${item.netAmount.toFixed(2)} MXN
+                            </div>
+                        </div>
+
+                        <div class="text-right pl-2 border-l border-zinc-800">
+                            <span class="text-[10px] font-mono px-2 py-0.5 bg-zinc-800 text-slate-300 rounded-full">
+                                ${item.effectivePct.toFixed(1)}%
+                            </span>
+                        </div>
+                    </div>
+                `;
+                resultsContainer.appendChild(card);
+            });
+        }
+
+        function renderMatrixTable() {
+            const tbody = document.getElementById('matrixTableBody');
+            tbody.innerHTML = '';
+
+            const filtered = platforms.filter(p => {
+                if (currentFilter === 'instant') return p.instantPayout;
+                if (currentFilter === 'no-fix') return p.noFixFee;
+                return true;
+            });
+
+            filtered.forEach(p => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-apple-surface transition";
+                
+                const rateText = p.rateWebPct 
+                    ? `<span class="font-semibold text-apple-text">${p.rateWebPct}%</span>` 
+                    : `<span class="text-apple-subtext">N/A</span>`;
+                
+                const fixText = p.rateWebFix !== null 
+                    ? `$${p.rateWebFix.toFixed(2)} MXN` 
+                    : `<span class="text-apple-subtext">N/A</span>`;
+
+                tr.innerHTML = `
+                    <td class="py-4 px-6 font-semibold text-apple-text">${p.name}</td>
+                    <td class="py-4 px-6 font-mono">${rateText}</td>
+                    <td class="py-4 px-6 font-mono">${fixText}</td>
+                    <td class="py-4 px-6">${p.payoutDays}</td>
+                    <td class="py-4 px-6">${p.msi}</td>
+                    <td class="py-4 px-6 text-right">
+                        <span class="inline-block px-2.5 py-1 text-[10px] font-semibold rounded-full ${
+                            p.instantPayout ? 'bg-emerald-100 text-emerald-800' : 'bg-apple-surfaceHover text-apple-text'
+                        }">
+                            ${p.badge}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterTable(filterType) {
+            currentFilter = filterType;
+            document.querySelectorAll('.table-filter-btn').forEach(btn => {
+                btn.className = "table-filter-btn px-4 py-1.5 text-xs font-medium rounded-lg text-apple-subtext hover:text-apple-text transition";
+            });
+            event.target.className = "table-filter-btn px-4 py-1.5 text-xs font-medium rounded-lg bg-white text-apple-text shadow-sm transition";
+            renderMatrixTable();
+        }
+
+        function renderPlatformCards() {
+            const container = document.getElementById('platformCardsContainer');
+            container.innerHTML = '';
+
+            platforms.forEach(p => {
+                const card = document.createElement('div');
+                card.className = "bg-apple-surface p-6 rounded-2xl border border-apple-border/60 hover:border-apple-blue/40 transition flex flex-col justify-between";
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-semibold text-lg text-apple-text">${p.name}</h3>
+                            <span class="px-2.5 py-0.5 bg-white text-apple-blue border border-apple-border text-[10px] font-medium rounded-full shadow-sm">
+                                ${p.badge}
+                            </span>
+                        </div>
+
+                        <div class="p-4 bg-white rounded-xl border border-apple-border mb-4">
+                            <div class="text-[10px] text-apple-subtext uppercase tracking-wider">Tasa Estándar</div>
+                            <div class="text-2xl font-semibold text-apple-text mt-1">
+                                ${p.rateWebPct}% <span class="text-xs text-apple-subtext font-normal">+ $${(p.rateWebFix || 0).toFixed(2)} MXN</span>
+                            </div>
+                            <div class="text-[11px] text-apple-subtext mt-1">Liquidación: ${p.payoutDays}</div>
+                        </div>
+
+                        <ul class="space-y-2 mb-6 text-xs text-apple-text">
+                            ${p.features.map(f => `
+                                <li class="flex items-start gap-2">
+                                    <span class="text-apple-blue font-bold">•</span> <span>${f}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="border-t border-apple-border pt-4">
+                        <div class="text-[10px] text-apple-subtext uppercase tracking-wider font-medium">Recomendado para:</div>
+                        <p class="text-xs text-apple-text font-medium mt-0.5">${p.bestFor}</p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function exportData() {
+            let csvContent = "data:text/csv;charset=utf-8,Plataforma,Comision_Porcentaje,Cuota_Fija_MXN,Liquidacion\n";
+            platforms.forEach(p => {
+                csvContent += `"${p.name}",${p.rateWebPct || 0},${p.rateWebFix || 0},"${p.payoutDays}"\n`;
+            });
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "pasarelas_cobro_mexico_apple_style.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function generateAIRecommendation() {
+            const input = document.getElementById('aiPromptInput').value.trim();
+            const resultBox = document.getElementById('aiResultBox');
+            const btn = document.getElementById('aiGenerateBtn');
+
+            if (!input) {
+                resultBox.classList.remove('hidden');
+                resultBox.innerHTML = '<span class="text-rose-400 font-semibold">Por favor ingresa los datos de tu negocio para generar la recomendación.</span>';
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = '<i data-lucide="loader" class="w-4 h-4 animate-spin"></i> Analizando...';
+
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.innerHTML = '<i data-lucide="cpu" class="w-4 h-4"></i> Generar Diagnóstico';
+
+                let recommended = "Stripe México o Mercado Pago";
+                let textReason = "Tasa competitiva con infraestructura confiable para flujo e-commerce estándar.";
+
+                const query = input.toLowerCase();
+                if (query.includes('oxxo') || query.includes('efectivo') || query.includes('spei')) {
+                    recommended = "Conekta / Openpay";
+                    textReason = "Excelente soporte para depósitos en efectivo OXXO y SPEI automatizado con baja cuota fija.";
+                } else if (query.includes('física') || query.includes('tienda') || query.includes('pos')) {
+                    recommended = "Clip / Mercado Pago Point";
+                    textReason = "Cero cuota fija mensual, ideal para cobro presencial en tienda o punto de venta.";
+                } else if (query.includes('dólares') || query.includes('internacional') || query.includes('usa')) {
+                    recommended = "Stripe / PayPal México";
+                    textReason = "Aceptación multimoneda sin fricción con altos estándares de conversión internacional.";
+                }
+
+                resultBox.classList.remove('hidden');
+                resultBox.innerHTML = `
+                    <div class="flex items-center gap-2 text-apple-blue font-semibold mb-2">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i> Diagnóstico Sugerido: ${recommended}
+                    </div>
+                    <p class="text-slate-300 mb-2 font-sans text-xs leading-relaxed">${textReason}</p>
+                    <div class="text-[10px] text-slate-500 border-t border-zinc-800 pt-2">
+                        *Estimación algorítmica basada en las tarifas del mercado mexicano 2026.
+                    </div>
+                `;
+                lucide.createIcons();
+            }, 600);
+        }
+    </script>
+</body>
+</html>
